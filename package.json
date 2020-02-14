@@ -36,5 +36,8 @@
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11",
     "xml-loader": "^1.2.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15"
   }
 }
