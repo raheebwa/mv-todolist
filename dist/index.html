@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Ramar's Todolist</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container py-2">
+      <!-- Heading -->
+      <header>
+        <div class="jumbotron bg-dark text-white text-center">
+          <h1 class="display-3">Ramar's Todolist</h1>
+          <p class="lead">Stuff that I should be doing.. Should have done, or will do ..</p>
+        </div>
+      </header>
+       <main>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="list-group border border-dark rounded-0">
+              <a href="#" class="border border-dark rounded-0 list-group-item list-group-item-action text-center">
+                <h3>Projects</h3>
+              </a>
+              <a href="#" class="border border-dark rounded-0 list-group-item list-group-item-action">Default</a>
+              <a href="#" class="border border-dark rounded-0 list-group-item list-group-item-action">Project #1</a>
+              <a href="#" class="border border-dark rounded-0 list-group-item list-group-item-action">Project #2</a>
+              <a href="#" class="border border-dark rounded-0 list-group-item list-group-item-action text-white bg-dark">Project
+                #3
+                <i class="fa fa-arrow-right pull-right" aria-hidden="true"></i>
+              </a>
+              <a href="#" class="border border-dark rounded-0 list-group-item list-group-item-action">Project #4</a>
+            </div>
+            <form id="add-project-form"></form>
+          </div>
+          <div class="col-md-9">
+            <form id="add-task-form" class="mb-2">
+              <div class="row">
+                <div class="col-md-7"><input type="text" name="add" id="add" class="form-control" placeholder="Task Title">
+                  <textarea class="form-control my-2" placeholder="description" rows="5"></textarea>
+                </div>
+                <div class="col-md-5">
+                  Priority:
+                  <select class="form-control my-1">
+                    <option value="0">None</option>
+                    <option value="1">Low</option>
+                    <option value="2">Medium</option>
+                    <option value="3">High</option>
+                  </select>
+        
+                  Project:
+                  <select class="form-control my-1">
+                    <option value="0">Default</option>
+                    <option value="1">Low</option>
+                    <option value="2">Medium</option>
+                    <option value="3">High</option>
+                  </select>
+                  <button type="submit" class="btn btn-outline-dark btn-block">Add Task</button>
+                </div>
+              </div>
+            </form>
+            <div class="card text-dark border-dark">
+              <div class="card-body">
+                <h4 class="card-title border-bottom pb-2">Your currently viewing todos for <strong>Project #3</strong>
+                </h4>
+                <div class="card-columns">
+                  <div class="card text-white bg-danger">
+                    <div class="card-body">
+                      <h4 class="card-title">Task Title</h4>
+                      <p class="card-text">Text</p>
+                    </div>
+                  </div>
+                  <div class="card text-white bg-success">
+                    <div class="card-body">
+                      <h4 class="card-title">Title</h4>
+                      <p class="card-text">Text</p>
+                    </div>
+                  </div>
+                  <div class="card text-white bg-info">
+                    <div class="card-body">
+                      <h4 class="card-title">Title</h4>
+                      <p class="card-text">Text</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+       </main>
+       <footer class="text-muted text-center">
+         <hr>
+         &copy; 2020. <a href="#">@ramar</a>
+       </footer>
+    </div>
+  <script src="./main.js"></script>  
+  </body>
+</html>
