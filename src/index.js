@@ -1,6 +1,9 @@
-
+import projectsModel from './modules/projects/projectsModel';
+import projectsView from './modules/projects/projectsView';
 import renderProjectForm from './modules/projects/addProjectForm';
 import renderTaskForm from './modules/tasks/addTaskForm';
+
+// console.log();
 
 // Clean container
 const clearContent = elementID => {
@@ -18,3 +21,6 @@ document.getElementById('btn-add-task').addEventListener('click', () => {
   clearContent('add-form');
   document.getElementById('add-form').appendChild(renderTaskForm());
 });
+
+// Render Project list
+document.getElementById('project-list').appendChild(projectsView.all(projectsModel.allProjects()));
