@@ -12,6 +12,10 @@ const projectsView = {
     });
     return listGroup;
   },
+  // todo
+  // find(project){}
+  // show(project)
+  // delete(project){}
 };
 
 export default projectsView;
