@@ -27,4 +27,4 @@ document.getElementById('btn-add-task').addEventListener('click', () => {
 // Render Project list
 document.getElementById('project-list').appendChild(projectsView.all(projectsModel.allProjects()));
 // Render Card list
-document.getElementById('tasks-list').appendChild(tasksView.all(tasksModel.allTasks()));
+tasksView.all(tasksModel.allTasks());
