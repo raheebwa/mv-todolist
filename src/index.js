@@ -1,5 +1,7 @@
 import projectsModel from './modules/projects/projectsModel';
 import projectsView from './modules/projects/projectsView';
+import tasksModel from './modules/tasks/tasksModel';
+import tasksView from './modules/tasks/tasksView';
 import renderProjectForm from './modules/projects/addProjectForm';
 import renderTaskForm from './modules/tasks/addTaskForm';
 
@@ -24,3 +26,5 @@ document.getElementById('btn-add-task').addEventListener('click', () => {
 
 // Render Project list
 document.getElementById('project-list').appendChild(projectsView.all(projectsModel.allProjects()));
+// Render Card list
+document.getElementById('tasks-list').appendChild(tasksView.all(tasksModel.allTasks()));

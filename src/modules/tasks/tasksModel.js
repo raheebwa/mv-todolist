@@ -11,6 +11,12 @@ const tasks = [
     dueDate: '2021-11-03',
     priority: 0,
     project: 0,
+  }, {
+    title: ' Other Task',
+    description: 'This is a test task',
+    dueDate: '2021-11-03',
+    priority: 0,
+    project: 0,
   },
 ];
 
