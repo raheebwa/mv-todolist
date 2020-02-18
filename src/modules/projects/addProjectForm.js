@@ -1,5 +1,5 @@
 // find form container
-const formContainer = document.getElementById('project-form');
+const formContainer = document.getElementById('add-form');
 
 // create form
 const form = document.createElement('form');
@@ -13,7 +13,7 @@ textBox.setAttribute('id', 'project-name');
 
 const submitBtn = document.createElement('button');
 submitBtn.setAttribute('type', 'submit');
-submitBtn.setAttribute('class', 'btn btn-outline-dark btn-block');
+submitBtn.setAttribute('class', 'btn btn-outline-dark btn-block my-4');
 submitBtn.innerText = 'Create Project';
 
 const renderProjectForm = () => {

@@ -1,7 +1,7 @@
 import projectsModel from '../projects/projectsModel';
 
 // find form container
-const formContainer = document.getElementById('task-form');
+const formContainer = document.getElementById('add-form');
 
 // create form
 const form = document.createElement('form');
