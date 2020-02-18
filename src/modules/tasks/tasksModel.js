@@ -1,5 +1,18 @@
-const tasks = ['Test Page', 'Add New Task(s) Under Each Project', 'Delete Task(s) under Each Project'];
-
+const tasks = [
+  {
+    title: 'Test Page',
+    description: 'This is a test task',
+    dueDate: '2021-11-03',
+    priority: 0,
+    project: 0,
+  }, {
+    title: 'Some other Task',
+    description: 'This is a test task',
+    dueDate: '2021-11-03',
+    priority: 0,
+    project: 0,
+  },
+];
 
 const tasksModel = {
   allTasks() {
