@@ -15,6 +15,6 @@ document.getElementById('btn-add-project').addEventListener('click', () => {
 });
 
 document.getElementById('btn-add-task').addEventListener('click', () => {
-  
+  clearContent('add-form');
   document.getElementById('add-form').appendChild(renderTaskForm());
 });
