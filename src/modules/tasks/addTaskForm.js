@@ -5,7 +5,7 @@ const formContainer = document.getElementById('add-form');
 
 // create form
 const form = document.createElement('form');
-
+form.setAttribute('id', 'task-form');
 // create form fields
 const textBox = document.createElement('input');
 textBox.setAttribute('type', 'text');
