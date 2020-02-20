@@ -26,6 +26,11 @@ const tasksView = {
     });
     return cardContainer;
   },
+
+  add(){
+    
+  }
+
   // todo
   // find(project){}
   // show(project)

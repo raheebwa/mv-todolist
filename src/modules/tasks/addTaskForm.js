@@ -1,11 +1,9 @@
 import projectsModel from '../projects/projectsModel';
 
-// find form container
-const formContainer = document.getElementById('add-form');
-
 // create form
 const form = document.createElement('form');
 form.setAttribute('id', 'task-form');
+form.className = ('d-none');
 // create form fields
 const textBox = document.createElement('input');
 textBox.setAttribute('type', 'text');
@@ -56,9 +54,8 @@ const renderTaskForm = () => {
   form.appendChild(selectPriority);
   form.appendChild(selectProjects);
   form.appendChild(submitBtn);
-
-  formContainer.appendChild(form);
-  return formContainer;
+  
+  return form;
 };
 
 export default renderTaskForm;
