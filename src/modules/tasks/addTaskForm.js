@@ -9,13 +9,13 @@ const textBox = document.createElement('input');
 textBox.setAttribute('type', 'text');
 textBox.setAttribute('class', 'form-control my-2');
 textBox.setAttribute('placeholder', 'Task title');
-textBox.setAttribute('id', 'task-name');
+textBox.setAttribute('id', 'taskName');
 textBox.setAttribute('name', 'task-name');
 
 const textArea = document.createElement('textarea');
 textArea.setAttribute('class', 'form-control my-2');
 textArea.setAttribute('placeholder', 'Task Description');
-textArea.setAttribute('id', 'task-desc');
+textArea.setAttribute('id', 'taskDesc');
 textArea.setAttribute('name', 'task-desc');
 
 const textDate = document.createElement('input');

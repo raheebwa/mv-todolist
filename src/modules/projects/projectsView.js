@@ -28,6 +28,7 @@ const projectsView = {
     form.addEventListener('submit', function (e) {
       const listItem = renderListItem(projValue.value);
       listGroup.appendChild(listItem);
+      projValue.value = "";
       e.preventDefault(); 
     });
 
