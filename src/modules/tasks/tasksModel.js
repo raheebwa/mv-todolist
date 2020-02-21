@@ -3,7 +3,7 @@ import database from "./../database";
 const tasks = [
   {
     title: 'Test Task',
-    description: 'This is a test task',
+    description: 'This is a test task, it will disappear when you create your first',
     dueDate: '2021-11-03',
     priority: 0,
     project: 0,
