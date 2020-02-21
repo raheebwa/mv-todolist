@@ -1,4 +1,4 @@
-import projectsModel from './modules/projects/projectsModel';
+
 import projectsView from './modules/projects/projectsView';
 import tasksModel from './modules/tasks/tasksModel';
 import tasksView from './modules/tasks/tasksView';
@@ -30,7 +30,7 @@ document.getElementById('btn-add-task').addEventListener('click', () => {
 });
 
 // Render Project list
-document.getElementById('project-list').appendChild(projectsView.all(projectsModel.allProjects()));
+document.getElementById('project-list').appendChild(projectsView.all());
 // Render Card list
 tasksView.all(tasksModel.allTasks());
 // Add to project list and store locally
