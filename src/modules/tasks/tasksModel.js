@@ -12,10 +12,10 @@ const tasks = [
 
 const tasksModel = {
   allTasks() {
-    if (!database.retrieve(tasks)) {
+    if (!database.retrieve('tasks')) {
       return tasks; 
     } else {
-      return database.retrieve(tasks);
+      return database.retrieve('tasks');
     }
   },
 
