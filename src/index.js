@@ -32,7 +32,7 @@ document.getElementById('btn-add-task').addEventListener('click', () => {
 // Render Project list
 document.getElementById('project-list').appendChild(projectsView.all());
 // Render Card list
-tasksView.all(tasksModel.allTasks());
+tasksView.all();
 // Add to project list and store locally
 projectsView.add();
 // Add to tasklist and store locally
