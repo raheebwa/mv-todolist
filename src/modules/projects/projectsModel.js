@@ -6,10 +6,10 @@ const projects = ['Default'];
 
 const projectsModel = {
   allProjects() {
-   if (!database.retrieve(projects)) {
+   if (!database.retrieve('projects')) {
      return projects;
    } else {
-     return database.retrieve(projects); 
+     return database.retrieve('projects'); 
    }
   },
 
