@@ -13,18 +13,27 @@ const clearContent = elementID => {
   div.removeChild(div.firstChild);
 };
 
+// render forms
+document.getElementById('add-form').appendChild(renderProjectForm());
+document.getElementById('add-form').appendChild(renderTaskForm());
+
 //  Listen for clickevents
 document.getElementById('btn-add-project').addEventListener('click', () => {
-  clearContent('add-form');
-  document.getElementById('add-form').appendChild(renderProjectForm());
+  // hide task form and display project form
+  document.getElementById('project-form').className = "";
+  document.getElementById('task-form').className = "d-none";
 });
 
 document.getElementById('btn-add-task').addEventListener('click', () => {
-  clearContent('add-form');
-  document.getElementById('add-form').appendChild(renderTaskForm());
+  document.getElementById('task-form').className = "";
+  document.getElementById('project-form').className = "d-none";
 });
 
 // Render Project list
 document.getElementById('project-list').appendChild(projectsView.all(projectsModel.allProjects()));
 // Render Card list
-document.getElementById('tasks-list').appendChild(tasksView.all(tasksModel.allTasks()));
+tasksView.all(tasksModel.allTasks());
+// Add to project list and store locally
+projectsView.add();
+// Add to tasklist and store locally
+tasksView.add();
