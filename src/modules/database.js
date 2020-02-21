@@ -1,10 +1,10 @@
 const database = {
-    store(table, content) {
-        window.localStorage.table = content.innerHTML;
+    store(key, value) {
+        localStorage.setItem(key, JSON.stringify(value));
     },
 
-    retrieve(table){
-        return window.localStorage.table;
+    retrieve(key){
+        return JSON.parse(localStorage.getItem(key));
     }
 };
 
