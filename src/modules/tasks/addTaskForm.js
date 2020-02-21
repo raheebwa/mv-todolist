@@ -29,11 +29,13 @@ const renderSelect = (id, options) => {
   select.setAttribute('class', 'form-control my-2');
   select.setAttribute('id', id);
 
+  let count = 0;
   options.forEach(opt => {
     const option = document.createElement('option');
-    option.setAttribute('value', opt);
+    option.setAttribute('value', count);
     option.innerText = opt;
     select.appendChild(option);
+    count += 1;
   });
 
   return select;
