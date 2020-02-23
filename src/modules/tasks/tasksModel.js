@@ -1,4 +1,4 @@
-import database from "./../database";
+import database from '../database';
 
 const tasks = [
   {
@@ -13,10 +13,9 @@ const tasks = [
 const tasksModel = {
   allTasks() {
     if (!database.retrieve('tasks')) {
-      return tasks; 
-    } else {
-      return database.retrieve('tasks');
+      return tasks;
     }
+    return database.retrieve('tasks');
   },
 
   addTask(task) {

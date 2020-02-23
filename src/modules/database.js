@@ -1,11 +1,11 @@
 const database = {
-    store(key, value) {
-        localStorage.setItem(key, JSON.stringify(value));
-    },
+  store(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+  },
 
-    retrieve(key){
-        return JSON.parse(localStorage.getItem(key));
-    }
+  retrieve(key) {
+    return JSON.parse(localStorage.getItem(key));
+  },
 };
 
 

@@ -56,7 +56,7 @@ const renderTaskForm = () => {
   form.appendChild(selectPriority);
   form.appendChild(selectProjects);
   form.appendChild(submitBtn);
-  
+
   return form;
 };
 
