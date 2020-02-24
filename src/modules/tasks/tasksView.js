@@ -2,9 +2,11 @@ import tasksModel from './tasksModel';
 import database from '../database';
 import renderEditTaskForm from "./EditTaskForm";
 import { clearContent, mySafeString, deleteValue } from '../utlities';
+import projectsModel from '../projects/projectsModel';
 
-const renderCard = (title, desc, dueDate, priority, count) => {
+const renderCard = (title, desc, dueDate, priority, count, project) => {
   const card = document.createElement('div');
+  card.setAttribute('project-number', project);
   card.classList.add('card', 'text-dark', 'border-warning', 'bg-warning');
   card.setAttribute('id', `card-no-${count}`);
   const priorityBadge = document.createElement('span');
@@ -38,7 +40,7 @@ const renderCard = (title, desc, dueDate, priority, count) => {
   btnDel.setAttribute('id', 'del-btn');
   btnDel.setAttribute('href', '#');
   btnDel.setAttribute('data-project-id', count);
-  btnDel.innerText = 'Delete';
+  btnDel.innerText = 'Done';
   btnDel.addEventListener('click', ()=>{
     btnDel.parentElement.parentElement.classList.add("d-none");
     database.store('tasks',deleteValue(tasksModel.allTasks(), Number(btnDel.getAttribute('data-project-id'))));
@@ -81,12 +83,18 @@ const renderCard = (title, desc, dueDate, priority, count) => {
 };
 
 const tasksView = {
-  all() {
+  all(project = 0) {
     const cardContainer = document.getElementById('tasks-list');
+    const projectTitle = document.getElementById('project-title');
+    projectTitle.innerText = '';
+    projectTitle.innerText = projectsModel.allProjects()[project];
 
     tasksModel.allTasks().forEach(function(lItem, index) {
       const card = renderCard(lItem.title, lItem.description,
-        lItem.dueDate, lItem.priority, index);
+        lItem.dueDate, lItem.priority, index, lItem.project);
+        if (project != lItem.project) {
+          card.classList.add('d-none');
+        }
       cardContainer.appendChild(card);
     });
     return cardContainer;
@@ -136,11 +144,11 @@ const tasksView = {
   },
 
   edit(id) {
+    clearContent('add-form');
     let myTask = tasksModel.allTasks()[Number(id)];
     const myForm = renderEditTaskForm(myTask.title, myTask.description, myTask.dueDate,
       myTask.priority, myTask.project);
     const formContainer = document.getElementById('add-form');
-    clearContent('add-form');
     formContainer.appendChild(myForm);
     
     const editForm = document.getElementById('edit-task');

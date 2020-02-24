@@ -1,9 +1,11 @@
 import projectsModel from './projectsModel';
 import database from '../database';
+import tasksView from "./../tasks/tasksView";
 
-const renderListItem = (content) => {
+const renderListItem = (content, id) => {
   const listItem = document.createElement('a');
   listItem.setAttribute('class', 'border border-dark rounded-0 list-group-item list-group-item-action');
+  listItem.setAttribute('id', 'proj-'+id);
   listItem.innerHTML = content;
   return listItem;
 };
@@ -14,8 +16,12 @@ const projectsView = {
     listGroup.setAttribute('class', 'list-group border border-dark');
     listGroup.setAttribute('id', 'project-list-group');
 
-    projectsModel.allProjects().forEach(lItem => {
-      const listItem = renderListItem(lItem);
+    projectsModel.allProjects().forEach((lItem, index) => {
+      const listItem = renderListItem(lItem, index);
+      listItem.addEventListener('click', ()=>{
+        document.getElementById('tasks-list').innerText = '';
+        tasksView.all(index);
+      });
       listGroup.appendChild(listItem);
     });
     return listGroup;
@@ -38,7 +44,7 @@ const projectsView = {
         database.store('projects', storedProj);
       }
       projValue.value = '';
-      e.preventDefault();
+      location.reload();
     });
   },
 };
