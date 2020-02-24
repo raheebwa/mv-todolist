@@ -25,7 +25,11 @@ const renderCard = (title, desc, dueDate, priority, count) => {
   btnEdit.setAttribute('id', 'edit-btn');
   btnEdit.classList.add('mr-1', 'btn', 'btn-sm', 'btn-outline-dark');
   btnEdit.setAttribute('href', '#');
+  btnEdit.setAttribute('edit-data-id', count);
   btnEdit.innerText = 'Edit';
+  btnEdit.addEventListener('click', ()=>{
+    tasksView.edit(btnEdit.getAttribute('edit-data-id'));
+  })
 
 
   const btnDel = document.createElement('a');
@@ -79,9 +83,9 @@ const tasksView = {
   all() {
     const cardContainer = document.getElementById('tasks-list');
 
-    tasksModel.allTasks().forEach((lItem, index) => {
+    tasksModel.allTasks().forEach(function(lItem, index) {
       const card = renderCard(lItem.title, lItem.description,
-        lItem.dueDate, lItem.priority, lItem.project, index);
+        lItem.dueDate, lItem.priority, index);
       cardContainer.appendChild(card);
     });
     return cardContainer;
@@ -130,10 +134,8 @@ const tasksView = {
     });
   },
 
-  delete() {
-    // get array index of task
-    // load localstorage and delete array index
-    // Hide it in UI so that its not visible
+  edit(id) {
+    console.log(id);
   }
 
 };
