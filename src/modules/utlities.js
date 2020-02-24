@@ -5,8 +5,10 @@ const mySafeString = myS => {
 
 // Clear Inner HTML
 const clearContent = elementID => {
-  const div = document.getElementById(elementID);
-  div.removeChild(div.firstChild);
+  const parent = document.getElementById(elementID);
+  while (parent.firstChild) {
+    parent.firstChild.remove();
+  }
 };
 
 //  Delete from array

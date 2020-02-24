@@ -1,5 +1,6 @@
 import tasksModel from './tasksModel';
 import database from '../database';
+import renderEditTaskForm from "./EditTaskForm";
 import { clearContent, mySafeString, deleteValue } from '../utlities';
 
 const renderCard = (title, desc, dueDate, priority, count) => {
@@ -130,12 +131,41 @@ const tasksView = {
       taskPriority.value = 0;
       taskProject.value = 0;
 
-      // e.preventDefault();
+      e.preventDefault();
     });
   },
 
   edit(id) {
-    console.log(id);
+    let myTask = tasksModel.allTasks()[Number(id)];
+    const myForm = renderEditTaskForm(myTask.title, myTask.description, myTask.dueDate,
+      myTask.priority, myTask.project);
+    const formContainer = document.getElementById('add-form');
+    clearContent('add-form');
+    formContainer.appendChild(myForm);
+    
+    const editForm = document.getElementById('edit-task');
+    editForm.addEventListener('submit', (e) => {
+      const taskTitle = document.getElementById('taskName');
+      const taskDesc = document.getElementById('taskDesc');
+      const taskDueDate = document.getElementById('due-date');
+      const taskPriority = document.getElementById('select-priority');
+      const taskProject = document.getElementById('select-projects');
+
+      const myEditedTask = {
+        title: taskTitle.value,
+        description: taskDesc.value,
+        dueDate: taskDueDate.value,
+        priority: taskPriority.value,
+        project: taskProject.value,
+      };
+
+      const data = tasksModel.allTasks(); 
+
+     data[Number(id)] = myEditedTask;
+      database.store('tasks', data);
+      location.reload();
+
+    })
   }
 
 };
