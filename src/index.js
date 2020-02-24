@@ -1,20 +1,31 @@
 
- import _ from 'lodash';
- import printMe from './print.js';
+import projectsView from './modules/projects/projectsView';
+import tasksView from './modules/tasks/tasksView';
+import renderProjectForm from './modules/projects/addProjectForm';
+import renderTaskForm from './modules/tasks/addTaskForm';
 
-  function component() {
-    const element = document.createElement('div');
-   const btn = document.createElement('button');
 
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+// render forms
+document.getElementById('add-form').appendChild(renderProjectForm());
+document.getElementById('add-form').appendChild(renderTaskForm());
 
-   btn.innerHTML = 'Click me and check the console!';
-   btn.onclick = printMe;
+//  Listen for clickevents
+document.getElementById('btn-add-project').addEventListener('click', () => {
+  // hide task form and display project form
+  document.getElementById('project-form').className = '';
+  document.getElementById('task-form').className = 'd-none';
+});
 
-   element.appendChild(btn);
+document.getElementById('btn-add-task').addEventListener('click', () => {
+  document.getElementById('task-form').className = '';
+  document.getElementById('project-form').className = 'd-none';
+});
 
-    return element;
-  }
-
-  document.body.appendChild(component());
-
+// Render Project list
+document.getElementById('project-list').appendChild(projectsView.all());
+// Render Card list
+tasksView.all();
+// Add to project list and store locally
+projectsView.add();
+// Add to tasklist and store locally
+tasksView.add();

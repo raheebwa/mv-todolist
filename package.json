@@ -4,7 +4,9 @@
   "description": "A starter template for vanilla JavaScript Projects",
   "main": ".eslintrc.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack --mode development --watch",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open"
   },
   "repository": {
     "type": "git",
@@ -35,6 +37,7 @@
     "stylelint-config-standard": "^20.0.0",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3",
     "xml-loader": "^1.2.1"
   },
   "dependencies": {
