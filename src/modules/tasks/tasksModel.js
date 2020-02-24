@@ -1,19 +1,9 @@
+import database from '../database';
+
 const tasks = [
   {
-    title: 'Test Page',
-    description: 'This is a test task',
-    dueDate: '2021-11-03',
-    priority: 0,
-    project: 0,
-  }, {
-    title: 'Some other Task',
-    description: 'This is a test task',
-    dueDate: '2021-11-03',
-    priority: 0,
-    project: 0,
-  }, {
-    title: ' Other Task',
-    description: 'This is a test task',
+    title: 'Test Task',
+    description: 'This is a test task, You can edit or delete it',
     dueDate: '2021-11-03',
     priority: 0,
     project: 0,
@@ -22,7 +12,10 @@ const tasks = [
 
 const tasksModel = {
   allTasks() {
-    return tasks;
+    if (!database.retrieve('tasks')) {
+      return tasks;
+    }
+    return database.retrieve('tasks');
   },
 
   addTask(task) {

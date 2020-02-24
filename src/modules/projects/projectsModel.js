@@ -1,10 +1,15 @@
+
+import database from '../database';
 //  Database of Projects
-const projects = ['Default', 'Javascript', 'HTML5', 'CSS3', 'Ruby', 'Ruby On Rails'];
+const projects = ['Default'];
 
 
 const projectsModel = {
   allProjects() {
-    return projects;
+    if (!database.retrieve('projects')) {
+      return projects;
+    }
+    return database.retrieve('projects');
   },
 
   addProject(project) {

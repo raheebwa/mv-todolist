@@ -17,16 +17,15 @@
         <div class="jumbotron bg-dark text-white text-center">
           <h1 class="display-3">Ramar's Todolist</h1>
           <p class="lead">Stuff that I should be doing.. Should have done, or will do ..</p>
-          <button type="button" id="btn-add-project" class="btn btn-outline-light" btn-lg btn-block">Add New Project</button>
-          <button type="button" id="btn-add-task" class="btn btn-outline-light" btn-lg btn-block">Add New Task</button>
+          <button type="button" id="btn-add-project" class="btn btn-outline-light btn-lg">Add New Project</button>
+          <button type="button" id="btn-add-task" class="btn btn-outline-light btn-lg">Add New Task</button>
         </div>
       </header>
        <main>
         <div class="row">
           <div class="col-md-3 bg-light py-2 px-2" id="projects-row">
             <h3 class="bg-dark text-white text-center py-2">All Projects</h3>
-            <div id="project-list">
-              
+            <div id="project-list">              
             </div>
           </div>
           <div class="col-md-9  bg-light py-2 px-2" id="tasks-row">
@@ -34,7 +33,7 @@
             </div>
             <div class="card text-dark border-dark">
               <div class="card-body">
-                <h4 class="card-title border-bottom pb-2">Your currently viewing todos for <strong>Project: Default</strong>
+                <h4 class="card-title border-bottom pb-2">Your currently viewing todos for <em>Project:</em> <strong id="project-title"> Default</strong>
                 </h4>
                 <div class="card-columns" id="tasks-list">
                   
