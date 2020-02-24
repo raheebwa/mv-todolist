@@ -1,8 +1,39 @@
 import tasksModel from './tasksModel';
 import database from '../database';
-import renderEditTaskForm from "./EditTaskForm";
-import { clearContent, mySafeString, deleteValue } from '../utlities';
+import renderEditTaskForm from './EditTaskForm';
+import { clearContent, deleteValue } from '../utlities';
 import projectsModel from '../projects/projectsModel';
+
+const editTask = (id) => {
+  clearContent('add-form');
+  const myTask = tasksModel.allTasks()[Number(id)];
+  const myForm = renderEditTaskForm(myTask.title, myTask.description, myTask.dueDate,
+    myTask.priority, myTask.project);
+  const formContainer = document.getElementById('add-form');
+  formContainer.appendChild(myForm);
+
+  const editForm = document.getElementById('edit-task');
+  editForm.addEventListener('submit', () => {
+    const taskTitle = document.getElementById('taskName');
+    const taskDesc = document.getElementById('taskDesc');
+    const taskDueDate = document.getElementById('due-date');
+    const taskPriority = document.getElementById('select-priority');
+    const taskProject = document.getElementById('select-projects');
+
+    const myEditedTask = {
+      title: taskTitle.value,
+      description: taskDesc.value,
+      dueDate: taskDueDate.value,
+      priority: taskPriority.value,
+      project: taskProject.value,
+    };
+
+    const data = tasksModel.allTasks();
+
+    data[Number(id)] = myEditedTask;
+    database.store('tasks', data);
+  });
+};
 
 const renderCard = (title, desc, dueDate, priority, count, project) => {
   const card = document.createElement('div');
@@ -30,9 +61,9 @@ const renderCard = (title, desc, dueDate, priority, count, project) => {
   btnEdit.setAttribute('href', '#');
   btnEdit.setAttribute('edit-data-id', count);
   btnEdit.innerText = 'Edit';
-  btnEdit.addEventListener('click', ()=>{
-    tasksView.edit(btnEdit.getAttribute('edit-data-id'));
-  })
+  btnEdit.addEventListener('click', () => {
+    editTask(btnEdit.getAttribute('edit-data-id'));
+  });
 
 
   const btnDel = document.createElement('a');
@@ -41,9 +72,9 @@ const renderCard = (title, desc, dueDate, priority, count, project) => {
   btnDel.setAttribute('href', '#');
   btnDel.setAttribute('data-project-id', count);
   btnDel.innerText = 'Done';
-  btnDel.addEventListener('click', ()=>{
-    btnDel.parentElement.parentElement.classList.add("d-none");
-    database.store('tasks',deleteValue(tasksModel.allTasks(), Number(btnDel.getAttribute('data-project-id'))));
+  btnDel.addEventListener('click', () => {
+    btnDel.parentElement.parentElement.classList.add('d-none');
+    database.store('tasks', deleteValue(tasksModel.allTasks(), Number(btnDel.getAttribute('data-project-id'))));
   });
 
   const cardBody = document.createElement('div');
@@ -89,12 +120,12 @@ const tasksView = {
     projectTitle.innerText = '';
     projectTitle.innerText = projectsModel.allProjects()[project];
 
-    tasksModel.allTasks().forEach(function(lItem, index) {
+    tasksModel.allTasks().forEach((lItem, index) => {
       const card = renderCard(lItem.title, lItem.description,
         lItem.dueDate, lItem.priority, index, lItem.project);
-        if (project != lItem.project) {
-          card.classList.add('d-none');
-        }
+      if (Number(project) !== Number(lItem.project)) {
+        card.classList.add('d-none');
+      }
       cardContainer.appendChild(card);
     });
     return cardContainer;
@@ -142,39 +173,6 @@ const tasksView = {
       e.preventDefault();
     });
   },
-
-  edit(id) {
-    clearContent('add-form');
-    let myTask = tasksModel.allTasks()[Number(id)];
-    const myForm = renderEditTaskForm(myTask.title, myTask.description, myTask.dueDate,
-      myTask.priority, myTask.project);
-    const formContainer = document.getElementById('add-form');
-    formContainer.appendChild(myForm);
-    
-    const editForm = document.getElementById('edit-task');
-    editForm.addEventListener('submit', (e) => {
-      const taskTitle = document.getElementById('taskName');
-      const taskDesc = document.getElementById('taskDesc');
-      const taskDueDate = document.getElementById('due-date');
-      const taskPriority = document.getElementById('select-priority');
-      const taskProject = document.getElementById('select-projects');
-
-      const myEditedTask = {
-        title: taskTitle.value,
-        description: taskDesc.value,
-        dueDate: taskDueDate.value,
-        priority: taskPriority.value,
-        project: taskProject.value,
-      };
-
-      const data = tasksModel.allTasks(); 
-
-     data[Number(id)] = myEditedTask;
-      database.store('tasks', data);
-      location.reload();
-
-    })
-  }
 
 };
 

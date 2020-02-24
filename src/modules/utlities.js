@@ -14,12 +14,9 @@ const clearContent = elementID => {
 //  Delete from array
 const deleteValue = (arr, index) => {
   arr.splice(index, 1);
-  var filtered = arr.filter(function (el) {
-    return el != null;
-  });
+  const filtered = arr.filter((el) => el != null);
   return filtered;
-}
-
+};
 
 
 export { mySafeString, clearContent, deleteValue };
